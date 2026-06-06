@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinFlow — Financial Budget Management & Cash Flow Forecasting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ==================== SIDEBAR ==================== -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="8" fill="#1E3A8A"/>
+        <path d="M7 18L11 13L15 15L21 9" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="21" cy="9" r="2" fill="#F59E0B"/>
+      </svg>
+    </div>
+    <span class="logo-text">FinFlow</span>
+    <button class="sidebar-toggle" id="sidebarToggle" title="Thu gọn sidebar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-group">
+      <span class="nav-group-label">TỔNG QUAN</span>
+      <a href="#" class="nav-item active" data-page="home">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Giới thiệu</span>
+      </a>
+      <a href="#" class="nav-item" data-page="dashboard">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-page="analytics">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Analytics</span>
+      </a>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-label">QUẢN LÝ</span>
+      <a href="#" class="nav-item" data-page="budget">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span>Ngân sách</span>
+        <span class="nav-badge">3</span>
+      </a>
+      <a href="#" class="nav-item" data-page="transactions">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        <span>Thu Chi</span>
+      </a>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-label">DỰ BÁO AI</span>
+      <a href="#" class="nav-item" data-page="forecast">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <span>Dự báo</span>
+        <span class="nav-badge ai">AI</span>
+      </a>
+      <a href="#" class="nav-item" data-page="reports">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span>Báo cáo</span>
+      </a>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-label">HỆ THỐNG</span>
+      <a href="#" class="nav-item" data-page="alerts">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span>Cảnh báo</span>
+        <span class="nav-badge danger">5</span>
+      </a>
+      <a href="#" class="nav-item" data-page="settings">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Cài đặt</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-card">
+      <div class="user-avatar">NT</div>
+      <div class="user-info">
+        <span class="user-name">Nguyễn Trung</span>
+        <span class="user-role">CFO · FinFlow Pro</span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="main-wrapper" id="mainWrapper">
+
+  <!-- TOP HEADER -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="breadcrumb">
+        <span class="page-title" id="pageTitle">Giới Thiệu</span>
+        <span class="breadcrumb-sep">·</span>
+        <span class="breadcrumb-sub">Tháng 6, 2026</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="search-bar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" placeholder="Tìm kiếm giao dịch, báo cáo..." />
+      </div>
+      <button class="icon-btn notification-btn" id="notifBtn" title="Thông báo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notif-dot">5</span>
+      </button>
+      <button class="icon-btn" id="darkToggle" title="Chế độ tối">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <div class="period-selector">
+        <select id="periodSelect">
+          <option>Tháng này</option>
+          <option>Quý này</option>
+          <option>Năm 2026</option>
+          <option>Năm 2025</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- NOTIFICATION PANEL -->
+  <div class="notif-panel glass-panel" id="notifPanel">
+    <div class="notif-header">
+      <span>Thông báo</span>
+      <span class="notif-count">5 mới</span>
+    </div>
+    <div class="notif-list">
+      <div class="notif-item danger">
+        <div class="notif-icon">⚠️</div>
+        <div class="notif-content">
+          <strong>Vượt ngân sách Marketing</strong>
+          <span>Chi phí Marketing đã vượt 15% kế hoạch tháng này</span>
+          <time>5 phút trước</time>
+        </div>
+      </div>
+      <div class="notif-item warning">
+        <div class="notif-icon">📉</div>
+        <div class="notif-content">
+          <strong>Dòng tiền cảnh báo</strong>
+          <span>Projected Cash Flow tháng 7 có nguy cơ âm</span>
+          <time>1 giờ trước</time>
+        </div>
+      </div>
+      <div class="notif-item info">
+        <div class="notif-icon">🤖</div>
+        <div class="notif-content">
+          <strong>AI Dự báo hoàn thành</strong>
+          <span>Báo cáo dự báo Q3/2026 đã được tạo</span>
+          <time>2 giờ trước</time>
+        </div>
+      </div>
+      <div class="notif-item danger">
+        <div class="notif-icon">🔴</div>
+        <div class="notif-content">
+          <strong>Tỷ suất lợi nhuận thấp</strong>
+          <span>Profit margin tháng 5 giảm xuống 18.2%</span>
+          <time>Hôm qua</time>
+        </div>
+      </div>
+      <div class="notif-item warning">
+        <div class="notif-icon">💡</div>
+        <div class="notif-content">
+          <strong>Chi phí bất thường</strong>
+          <span>Phòng Logistics chi vượt 30% so với tháng trước</span>
+          <time>Hôm qua</time>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGES ==================== -->
+  <main class="page-content">
+
+    <!-- ===== PAGE: HOME / GIỚI THIỆU ===== -->
+    <section class="page active" id="page-home">
+
+      <!-- Hero Banner -->
+      <div class="home-hero">
+        <div class="home-hero-bg"></div>
+        <div class="home-hero-content">
+          <div class="home-logo-big">
+            <svg width="52" height="52" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="8" fill="#1E3A8A"/>
+              <path d="M7 18L11 13L15 15L21 9" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="21" cy="9" r="2" fill="#F59E0B"/>
+            </svg>
+          </div>
+          <h1 class="home-title">FinFlow</h1>
+          <p class="home-subtitle">Financial Budget Management &amp; Cash Flow Forecasting Platform</p>
+          <div class="home-tags">
+            <span class="home-tag blue">Quản lý Ngân sách</span>
+            <span class="home-tag green">Theo dõi Thu Chi</span>
+            <span class="home-tag orange">Dự báo AI</span>
+            <span class="home-tag purple">Phân tích tài chính</span>
+          </div>
+          <button class="btn-primary home-cta" onclick="switchPage('dashboard')">
+            Vào Dashboard →
+          </button>
+        </div>
+      </div>
+
+      <!-- Thông tin bài kiểm tra -->
+      <div class="home-info-grid">
+        <div class="home-info-card card">
+          <div class="home-info-icon">🎓</div>
+          <div class="home-info-body">
+            <h4>Kiểm tra điều kiện</h4>
+            <p>Môn Lập trình Web</p>
+          </div>
+        </div>
+        <div class="home-info-card card">
+          <div class="home-info-icon">👨‍🏫</div>
+          <div class="home-info-body">
+            <h4>Giảng viên hướng dẫn</h4>
+            <p>Th.S Hà Văn Sang</p>
+          </div>
+        </div>
+        <div class="home-info-card card">
+          <div class="home-info-icon">🏫</div>
+          <div class="home-info-body">
+            <h4>Đơn vị đào tạo</h4>
+            <p>Học viện Tài chính</p>
+          </div>
+        </div>
+        <div class="home-info-card card">
+          <div class="home-info-icon">📚</div>
+          <div class="home-info-body">
+            <h4>Lớp học phần</h4>
+            <p>CQ61/41.1_LT1</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phân công công việc -->
+      <div class="card home-section">
+        <div class="home-section-header">
+          <div class="home-section-icon">👥</div>
+          <div>
+            <h2 class="home-section-title">Phân Công Công Việc</h2>
+            <p class="home-section-sub">Nhóm 3 thành viên · Đề tài: Quản lý ngân sách &amp; Dự báo tài chính</p>
+          </div>
+        </div>
+
+        <div class="members-grid">
+
+          <!-- Thành viên 1 -->
+          <div class="member-card">
+            <div class="member-header" style="background: linear-gradient(135deg, #1E3A8A, #2d52b8)">
+              <div class="member-avatar-big">HP</div>
+              <div class="member-badge">Nhóm trưởng</div>
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Nguyễn Trương Hà Phương</h3>
+              <p class="member-class">Lớp CQ61/41.1_LT1 · Học viện Tài chính</p>
+              <div class="member-role-tag" style="background:#EFF6FF;color:#1E3A8A">
+                🎨 Frontend Lead &amp; UI/UX Design
+              </div>
+              <ul class="task-list">
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Thiết kế tổng thể UI/UX, hệ thống màu sắc, typography
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Xây dựng layout Sidebar, Topbar, Navigation
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Thiết kế trang Dashboard với 6 KPI Cards
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Responsive Design — Desktop, Tablet, Mobile
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Dark Mode / Light Mode toggle
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Trang Giới thiệu &amp; phân công (trang này)
+                </li>
+              </ul>
+              <div class="task-progress">
+                <div class="task-progress-bar">
+                  <div class="task-progress-fill" style="width:100%;background:#1E3A8A"></div>
+                </div>
+                <span>6/6 tasks</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thành viên 2 -->
+          <div class="member-card">
+            <div class="member-header" style="background: linear-gradient(135deg, #059669, #10B981)">
+              <div class="member-avatar-big">LD</div>
+              <div class="member-badge">Thành viên</div>
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Nguyễn Linh Đan</h3>
+              <p class="member-class">Lớp CQ61/41.1_LT1 · Học viện Tài chính</p>
+              <div class="member-role-tag" style="background:#ECFDF5;color:#065F46">
+                ⚙️ Logic &amp; Data Management
+              </div>
+              <ul class="task-list">
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Module Quản lý Thu Chi — thêm, sửa, xóa giao dịch
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Hệ thống lọc giao dịch theo loại, danh mục, thời gian
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Module Quản lý Ngân sách — CRUD ngân sách theo phòng ban
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Đồng bộ dữ liệu Thu Chi ↔ Ngân sách ↔ Dashboard
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Hệ thống Modal form với validation dữ liệu
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Trang Cài đặt hệ thống &amp; cấu hình người dùng
+                </li>
+              </ul>
+              <div class="task-progress">
+                <div class="task-progress-bar">
+                  <div class="task-progress-fill" style="width:100%;background:#10B981"></div>
+                </div>
+                <span>6/6 tasks</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thành viên 3 -->
+          <div class="member-card">
+            <div class="member-header" style="background: linear-gradient(135deg, #D97706, #F59E0B)">
+              <div class="member-avatar-big">NM</div>
+              <div class="member-badge">Thành viên</div>
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Nguyễn Bá Nhật Minh</h3>
+              <p class="member-class">Lớp CQ61/41.1_LT1 · Học viện Tài chính</p>
+              <div class="member-role-tag" style="background:#FFFBEB;color:#92400E">
+                📊 Charts, Analytics &amp; AI Forecast
+              </div>
+              <ul class="task-list">
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Tích hợp Chart.js — Line, Bar, Donut, Area charts
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Module Analytics — xu hướng doanh thu 12 tháng
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Module Dự báo AI — Time Series Forecasting 3/6/12 tháng
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Hệ thống Cảnh báo tự động — phát hiện vượt ngân sách
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  Tính năng Xuất PDF báo cáo tài chính
+                </li>
+                <li class="task-item done">
+                  <span class="task-dot" style="background:#10B981"></span>
+                  KPI Counter animation &amp; Sparkline charts
+                </li>
+              </ul>
+              <div class="task-progress">
+                <div class="task-progress-bar">
+                  <div class="task-progress-fill" style="width:100%;background:#F59E0B"></div>
+                </div>
+                <span>6/6 tasks</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tổng kết tính năng -->
+      <div class="card home-section" style="margin-top:20px">
+        <div class="home-section-header">
+          <div class="home-section-icon">🚀</div>
+          <div>
+            <h2 class="home-section-title">Tính Năng Đã Hoàn Thành</h2>
+            <p class="home-section-sub">18 tính năng chính · 3 module quản lý · 1 AI Forecasting engine</p>
+          </div>
+        </div>
+        <div class="features-grid">
+          <div class="feature-item"><span class="feat-icon">📊</span><span>Dashboard tổng hợp với 6 KPI</span></div>
+          <div class="feature-item"><span class="feat-icon">📈</span><span>5 loại biểu đồ tương tác</span></div>
+          <div class="feature-item"><span class="feat-icon">💰</span><span>Quản lý Thu Chi CRUD đầy đủ</span></div>
+          <div class="feature-item"><span class="feat-icon">📋</span><span>Quản lý Ngân sách theo phòng ban</span></div>
+          <div class="feature-item"><span class="feat-icon">🤖</span><span>AI Forecast 3/6/12 tháng</span></div>
+          <div class="feature-item"><span class="feat-icon">🔔</span><span>Hệ thống cảnh báo tự động</span></div>
+          <div class="feature-item"><span class="feat-icon">🔄</span><span>Đồng bộ dữ liệu real-time</span></div>
+          <div class="feature-item"><span class="feat-icon">📄</span><span>Xuất báo cáo PDF</span></div>
+          <div class="feature-item"><span class="feat-icon">🌙</span><span>Dark Mode / Light Mode</span></div>
+          <div class="feature-item"><span class="feat-icon">📱</span><span>Responsive Mobile/Tablet</span></div>
+          <div class="feature-item"><span class="feat-icon">🔍</span><span>Tìm kiếm &amp; lọc nâng cao</span></div>
+          <div class="feature-item"><span class="feat-icon">⚙️</span><span>Trang cài đặt hệ thống</span></div>
+        </div>
+      </div>
+
+      <!-- Footer credit -->
+      <div class="home-footer">
+        <div class="home-footer-logo">
+          <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="#1E3A8A"/>
+            <path d="M7 18L11 13L15 15L21 9" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <strong>FinFlow</strong>
+        </div>
+        <span>Kiểm tra điều kiện · Lập trình Web · CQ61/41.1_LT1 · Học viện Tài chính · 2026</span>
+      </div>
+
+    </section>
+
+    <!-- ===== PAGE: DASHBOARD ===== -->
+    <section class="page" id="page-dashboard">
+
+      <!-- Alert Banner -->
+      <div class="alert-banner">
+        <span class="alert-icon">⚠️</span>
+        <span>Chi phí Marketing đang vượt ngân sách <strong>15%</strong>. Dòng tiền tháng 7 có nguy cơ âm.</span>
+        <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">✕</button>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card" data-color="blue">
+          <div class="kpi-top">
+            <span class="kpi-label">Tổng Doanh Thu</span>
+            <div class="kpi-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          </div>
+          <div class="kpi-value" data-target="4823600000">0</div>
+          <div class="kpi-sub">
+            <span class="kpi-change positive">▲ 12.4%</span>
+            <span>so với tháng trước</span>
+          </div>
+          <div class="kpi-sparkline"><canvas id="spark1" width="120" height="36"></canvas></div>
+        </div>
+
+        <div class="kpi-card" data-color="red">
+          <div class="kpi-top">
+            <span class="kpi-label">Tổng Chi Phí</span>
+            <div class="kpi-icon red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+          </div>
+          <div class="kpi-value" data-target="3156400000">0</div>
+          <div class="kpi-sub">
+            <span class="kpi-change negative">▲ 8.1%</span>
+            <span>so với tháng trước</span>
+          </div>
+          <div class="kpi-sparkline"><canvas id="spark2" width="120" height="36"></canvas></div>
+        </div>
+
+        <div class="kpi-card" data-color="green">
+          <div class="kpi-top">
+            <span class="kpi-label">Lợi Nhuận Ròng</span>
+            <div class="kpi-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          </div>
+          <div class="kpi-value" data-target="1667200000">0</div>
+          <div class="kpi-sub">
+            <span class="kpi-change positive">▲ 18.2%</span>
+            <span>profit margin</span>
+          </div>
+          <div class="kpi-sparkline"><canvas id="spark3" width="120" height="36"></canvas></div>
+        </div>
+
+        <div class="kpi-card" data-color="orange">
+          <div class="kpi-top">
+            <span class="kpi-label">Dòng Tiền Hiện Tại</span>
+            <div class="kpi-icon orange"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          </div>
+          <div class="kpi-value" data-target="892500000">0</div>
+          <div class="kpi-sub">
+            <span class="kpi-change positive">▲ 5.3%</span>
+            <span>cash position</span>
+          </div>
+          <div class="kpi-sparkline"><canvas id="spark4" width="120" height="36"></canvas></div>
+        </div>
+
+        <div class="kpi-card" data-color="purple">
+          <div class="kpi-top">
+            <span class="kpi-label">Ngân Sách Còn Lại</span>
+            <div class="kpi-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          </div>
+          <div class="kpi-value" data-target="1244800000">0</div>
+          <div class="kpi-sub">
+            <div class="progress-mini"><div class="progress-fill" style="width:72%"></div></div>
+            <span>72% đã sử dụng</span>
+          </div>
+          <div class="kpi-sparkline"><canvas id="spark5" width="120" height="36"></canvas></div>
+        </div>
+
+        <div class="kpi-card" data-color="teal">
+          <div class="kpi-top">
+            <span class="kpi-label">Forecast Accuracy</span>
+            <div class="kpi-icon teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          </div>
+          <div class="kpi-value percent" data-target="94.7">0</div>
+          <div class="kpi-sub">
+            <span class="kpi-change positive">▲ 2.1%</span>
+            <span>AI model accuracy</span>
+          </div>
+          <div class="kpi-sparkline"><canvas id="spark6" width="120" height="36"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Charts Row 1 -->
+      <div class="charts-grid-2">
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Doanh Thu & Chi Phí</h3>
+              <p class="card-sub">6 tháng gần nhất · VNĐ</p>
+            </div>
+            <div class="chart-actions">
+              <button class="chip active">Tháng</button>
+              <button class="chip">Quý</button>
+            </div>
+          </div>
+          <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Dòng Tiền</h3>
+              <p class="card-sub">Xu hướng cash flow · 2026</p>
+            </div>
+            <div class="chart-actions">
+              <button class="chip active">Area</button>
+              <button class="chip">Line</button>
+            </div>
+          </div>
+          <div class="chart-wrap"><canvas id="cashFlowChart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Charts Row 2 -->
+      <div class="charts-grid-3">
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3 class="card-title">Cơ Cấu Chi Phí</h3>
+            <p class="card-sub">Phân bổ theo danh mục</p>
+          </div>
+          <div class="chart-wrap chart-donut"><canvas id="expenseChart"></canvas></div>
+          <div class="legend-list" id="expenseLegend"></div>
+        </div>
+
+        <div class="card" style="grid-column: span 2;">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Hiệu Suất Ngân Sách</h3>
+              <p class="card-sub">Kế hoạch vs Thực tế theo phòng ban</p>
+            </div>
+            <button class="btn-outline small">Xem chi tiết</button>
+          </div>
+          <div class="chart-wrap"><canvas id="budgetPerformChart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Recent Transactions + Top Expenses -->
+      <div class="charts-grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Giao Dịch Gần Đây</h3>
+            <button class="btn-outline small" onclick="switchPage('transactions')">Xem tất cả</button>
+          </div>
+          <div class="tx-list">
+            <div class="tx-item">
+              <div class="tx-icon income">₫</div>
+              <div class="tx-info"><strong>Hợp đồng dịch vụ ABC Corp</strong><span>Doanh thu · Dịch vụ</span></div>
+              <div class="tx-amount income">+285,000,000</div>
+            </div>
+            <div class="tx-item">
+              <div class="tx-icon expense">💸</div>
+              <div class="tx-info"><strong>Chi phí Marketing Q2</strong><span>Chi phí · Marketing</span></div>
+              <div class="tx-amount expense">-142,500,000</div>
+            </div>
+            <div class="tx-item">
+              <div class="tx-icon income">₫</div>
+              <div class="tx-info"><strong>Bán hàng sản phẩm X</strong><span>Doanh thu · Bán hàng</span></div>
+              <div class="tx-amount income">+198,000,000</div>
+            </div>
+            <div class="tx-item">
+              <div class="tx-icon expense">💸</div>
+              <div class="tx-info"><strong>Thuê mặt bằng VP HCM</strong><span>Chi phí · Mặt bằng</span></div>
+              <div class="tx-amount expense">-85,000,000</div>
+            </div>
+            <div class="tx-item">
+              <div class="tx-icon expense">💸</div>
+              <div class="tx-info"><strong>Phần mềm & Hạ tầng Cloud</strong><span>Chi phí · Công nghệ</span></div>
+              <div class="tx-amount expense">-56,200,000</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Top Chi Phí</h3>
+            <p class="card-sub">Tháng 6/2026</p>
+          </div>
+          <div class="top-expense-list">
+            <div class="top-exp-item">
+              <div class="top-exp-rank">1</div>
+              <div class="top-exp-info"><span>Nhân sự</span><small>32 giao dịch</small></div>
+              <div class="top-exp-right">
+                <span class="top-exp-amount">1,248,000,000</span>
+                <div class="mini-bar"><div class="mini-bar-fill" style="width:89%"></div></div>
+              </div>
+            </div>
+            <div class="top-exp-item">
+              <div class="top-exp-rank">2</div>
+              <div class="top-exp-info"><span>Vận hành</span><small>18 giao dịch</small></div>
+              <div class="top-exp-right">
+                <span class="top-exp-amount">624,000,000</span>
+                <div class="mini-bar"><div class="mini-bar-fill" style="width:62%"></div></div>
+              </div>
+            </div>
+            <div class="top-exp-item">
+              <div class="top-exp-rank">3</div>
+              <div class="top-exp-info"><span>Marketing</span><small>12 giao dịch</small></div>
+              <div class="top-exp-right">
+                <span class="top-exp-amount">412,000,000</span>
+                <div class="mini-bar over"><div class="mini-bar-fill" style="width:115%"></div></div>
+              </div>
+            </div>
+            <div class="top-exp-item">
+              <div class="top-exp-rank">4</div>
+              <div class="top-exp-info"><span>Logistics</span><small>9 giao dịch</small></div>
+              <div class="top-exp-right">
+                <span class="top-exp-amount">298,000,000</span>
+                <div class="mini-bar"><div class="mini-bar-fill" style="width:45%"></div></div>
+              </div>
+            </div>
+            <div class="top-exp-item">
+              <div class="top-exp-rank">5</div>
+              <div class="top-exp-info"><span>Công nghệ</span><small>7 giao dịch</small></div>
+              <div class="top-exp-right">
+                <span class="top-exp-amount">186,400,000</span>
+                <div class="mini-bar"><div class="mini-bar-fill" style="width:32%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PAGE: ANALYTICS ===== -->
+    <section class="page" id="page-analytics">
+      <div class="page-header-row">
+        <div>
+          <h2 class="page-heading">Analytics</h2>
+          <p class="page-desc">Phân tích chuyên sâu tài chính doanh nghiệp</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn-secondary" onclick="exportPDF()">📄 Export PDF</button>
+          <button class="btn-primary">📊 Export Excel</button>
+        </div>
+      </div>
+
+      <div class="charts-grid-2">
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3 class="card-title">Xu Hướng Doanh Thu</h3>
+            <p class="card-sub">Line chart · 12 tháng</p>
+          </div>
+          <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+        </div>
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3 class="card-title">Chi Phí Theo Danh Mục</h3>
+            <p class="card-sub">Bar chart · Tháng 6/2026</p>
+          </div>
+          <div class="chart-wrap"><canvas id="expBarChart"></canvas></div>
+        </div>
+      </div>
+      <div class="card chart-card" style="margin-top:24px">
+        <div class="card-header">
+          <h3 class="card-title">Xu Hướng Tài Chính Tổng Hợp</h3>
+          <p class="card-sub">Area chart · Doanh thu, Chi phí, Lợi nhuận</p>
+        </div>
+        <div class="chart-wrap" style="height:280px"><canvas id="areaChart"></canvas></div>
+      </div>
+    </section>
+
+    <!-- ===== PAGE: BUDGET ===== -->
+    <section class="page" id="page-budget">
+      <div class="page-header-row">
+        <div>
+          <h2 class="page-heading">Quản Lý Ngân Sách</h2>
+          <p class="page-desc">Lập kế hoạch và theo dõi ngân sách theo thời gian</p>
+        </div>
+        <div class="header-actions">
+          <select class="select-input">
+            <option>Tháng 6/2026</option>
+            <option>Q2/2026</option>
+            <option>Năm 2026</option>
+          </select>
+          <button class="btn-primary" onclick="openModal('budgetModal')">+ Tạo ngân sách</button>
+        </div>
+      </div>
+
+      <!-- Budget Summary -->
+      <div class="budget-summary-grid">
+        <div class="budget-summary-card">
+          <span class="bs-label">Tổng ngân sách</span>
+          <span class="bs-value">4,500,000,000 ₫</span>
+        </div>
+        <div class="budget-summary-card">
+          <span class="bs-label">Đã sử dụng</span>
+          <span class="bs-value used">3,156,400,000 ₫</span>
+        </div>
+        <div class="budget-summary-card">
+          <span class="bs-label">Còn lại</span>
+          <span class="bs-value remain">1,343,600,000 ₫</span>
+        </div>
+        <div class="budget-summary-card">
+          <span class="bs-label">% Sử dụng</span>
+          <span class="bs-value">70.1%</span>
+        </div>
+      </div>
+
+      <!-- Budget Categories -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-header">
+          <h3 class="card-title">Ngân Sách Theo Phòng Ban</h3>
+          <div class="tab-group">
+            <button class="tab active">Tháng</button>
+            <button class="tab">Quý</button>
+            <button class="tab">Năm</button>
+          </div>
+        </div>
+        <!-- JS renders this dynamically -->
+        <div class="budget-dept-list" id="budgetDeptList">
+          <div style="text-align:center;padding:32px;color:var(--text-muted)">Đang tải...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PAGE: TRANSACTIONS ===== -->
+    <section class="page" id="page-transactions">
+      <div class="page-header-row">
+        <div>
+          <h2 class="page-heading">Quản Lý Thu Chi</h2>
+          <p class="page-desc">Tất cả giao dịch tài chính doanh nghiệp</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn-secondary">📥 Import</button>
+          <button class="btn-primary" onclick="openModal('txModal')">+ Thêm giao dịch</button>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-bar card">
+        <div class="filter-item">
+          <label>Thời gian</label>
+          <select class="select-input">
+            <option>Tháng 6/2026</option>
+            <option>Tháng 5/2026</option>
+            <option>Q2/2026</option>
+            <option>Năm 2026</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label>Loại</label>
+          <select class="select-input" id="typeFilter">
+            <option value="">Tất cả</option>
+            <option value="income">Thu</option>
+            <option value="expense">Chi</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label>Danh mục</label>
+          <select class="select-input" id="catFilter">
+            <option value="">Tất cả</option>
+            <option>Bán hàng</option>
+            <option>Dịch vụ</option>
+            <option>Đầu tư</option>
+            <option>Nhân sự</option>
+            <option>Marketing</option>
+            <option>Vận hành</option>
+            <option>Công nghệ</option>
+            <option>Logistics</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label>Phòng ban</label>
+          <select class="select-input">
+            <option value="">Tất cả</option>
+            <option>HR</option>
+            <option>Marketing</option>
+            <option>Operations</option>
+            <option>IT</option>
+            <option>Sales</option>
+          </select>
+        </div>
+        <div class="filter-item search-item">
+          <label>Tìm kiếm</label>
+          <div class="search-input-wrap">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" placeholder="Tìm mã, tên giao dịch..." id="txSearch" />
+          </div>
+        </div>
+        <button class="btn-primary" onclick="filterTransactions()">Lọc</button>
+      </div>
+
+      <!-- Transaction Table -->
+      <div class="card table-card">
+        <div class="table-wrap">
+          <table class="data-table" id="txTable">
+            <thead>
+              <tr>
+                <th>Mã GD</th>
+                <th>Ngày</th>
+                <th>Loại</th>
+                <th>Danh mục</th>
+                <th>Mô tả</th>
+                <th>Số tiền (VNĐ)</th>
+                <th>Phụ trách</th>
+                <th>Ghi chú</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="txBody">
+            </tbody>
+          </table>
+        </div>
+        <div class="table-footer">
+          <span id="txCount">Hiển thị 10 / 48 giao dịch</span>
+          <div class="pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PAGE: FORECAST ===== -->
+    <section class="page" id="page-forecast">
+      <div class="page-header-row">
+        <div>
+          <h2 class="page-heading">Dự Báo Tài Chính AI</h2>
+          <p class="page-desc">Phân tích và dự báo dòng tiền bằng trí tuệ nhân tạo</p>
+        </div>
+        <div class="header-actions">
+          <div class="ai-badge">🤖 AI Model v2.4 · Acc 94.7%</div>
+          <button class="btn-primary" onclick="runForecast()">▶ Chạy dự báo</button>
+        </div>
+      </div>
+
+      <!-- Forecast KPIs -->
+      <div class="forecast-kpi-grid">
+        <div class="forecast-kpi-card blue">
+          <span class="fk-label">Forecast Revenue (3T)</span>
+          <span class="fk-value">14,820,000,000 ₫</span>
+          <span class="fk-change positive">▲ 8.3% vs hiện tại</span>
+        </div>
+        <div class="forecast-kpi-card red">
+          <span class="fk-label">Forecast Expense (3T)</span>
+          <span class="fk-value">9,640,000,000 ₫</span>
+          <span class="fk-change negative">▲ 5.1% vs hiện tại</span>
+        </div>
+        <div class="forecast-kpi-card green">
+          <span class="fk-label">Projected Cash Flow</span>
+          <span class="fk-value">5,180,000,000 ₫</span>
+          <span class="fk-change positive">▲ 12.4% vs Q1</span>
+        </div>
+        <div class="forecast-kpi-card orange">
+          <span class="fk-label">Financial Risk Score</span>
+          <span class="fk-value risk medium">Trung bình</span>
+          <span class="fk-change">Score: 42/100</span>
+        </div>
+      </div>
+
+      <!-- Forecast Period Tabs -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-header">
+          <h3 class="card-title">Biểu Đồ Dự Báo</h3>
+          <div class="tab-group">
+            <button class="tab active" onclick="switchForecast(3, this)">3 Tháng</button>
+            <button class="tab" onclick="switchForecast(6, this)">6 Tháng</button>
+            <button class="tab" onclick="switchForecast(12, this)">12 Tháng</button>
+          </div>
+        </div>
+        <div class="chart-wrap" style="height:300px"><canvas id="forecastChart"></canvas></div>
+      </div>
+
+      <!-- AI Insights -->
+      <div class="ai-insights-grid">
+        <div class="card ai-insight-card">
+          <div class="ai-insight-header">
+            <span class="ai-tag">📈 Trend Analysis</span>
+            <span class="conf-badge">Độ tin cậy: 91%</span>
+          </div>
+          <h4>Doanh thu tăng trưởng ổn định</h4>
+          <p>AI phát hiện xu hướng tăng trưởng doanh thu đều đặn 8-12% mỗi tháng. Dự báo Q3/2026 sẽ đạt 15.2 tỷ đồng, tăng 18% so với Q2.</p>
+          <div class="insight-metric"><span>Tốc độ tăng trưởng</span><strong>+10.4%/tháng</strong></div>
+        </div>
+        <div class="card ai-insight-card">
+          <div class="ai-insight-header">
+            <span class="ai-tag warn">⚡ Seasonal Analysis</span>
+            <span class="conf-badge">Độ tin cậy: 87%</span>
+          </div>
+          <h4>Biến động mùa vụ tháng 7-8</h4>
+          <p>Phân tích dữ liệu 3 năm cho thấy doanh thu thường giảm 12-15% trong tháng 7-8. Khuyến nghị tăng dự phòng cash flow.</p>
+          <div class="insight-metric"><span>Mức giảm dự kiến</span><strong class="warn">-13.2%</strong></div>
+        </div>
+        <div class="card ai-insight-card">
+          <div class="ai-insight-header">
+            <span class="ai-tag danger">🚨 Risk Detection</span>
+            <span class="conf-badge">Độ tin cậy: 78%</span>
+          </div>
+          <h4>Rủi ro dòng tiền tháng 8</h4>
+          <p>Kết hợp chi phí Marketing vượt ngân sách và mùa vụ thấp, dòng tiền tháng 8 có 62% xác suất xuống dưới 500 triệu.</p>
+          <div class="insight-metric"><span>Xác suất rủi ro</span><strong class="danger">62%</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PAGE: REPORTS ===== -->
+    <section class="page" id="page-reports">
+      <div class="page-header-row">
+        <div>
+          <h2 class="page-heading">Báo Cáo Tài Chính</h2>
+          <p class="page-desc">Tạo và xuất báo cáo chuyên nghiệp</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn-primary" onclick="exportPDF()">📄 Xuất PDF</button>
+        </div>
+      </div>
+      <div class="reports-grid">
+        <div class="report-card card" onclick="exportPDF()">
+          <div class="report-icon">📊</div>
+          <h4>Báo Cáo Tổng Hợp Tháng</h4>
+          <p>P&L, Cash Flow, Balance Sheet tháng 6/2026</p>
+          <span class="report-tag">PDF · Excel</span>
+        </div>
+        <div class="report-card card" onclick="exportPDF()">
+          <div class="report-icon">📈</div>
+          <h4>Báo Cáo Ngân Sách</h4>
+          <p>So sánh kế hoạch vs thực tế, phân tích phương sai</p>
+          <span class="report-tag">PDF · Excel</span>
+        </div>
+        <div class="report-card card" onclick="exportPDF()">
+          <div class="report-icon">🤖</div>
+          <h4>Báo Cáo AI Forecast</h4>
+          <p>Dự báo 3/6/12 tháng với phân tích rủi ro</p>
+          <span class="report-tag">PDF</span>
+        </div>
+        <div class="report-card card" onclick="exportPDF()">
+          <div class="report-icon">💰</div>
+          <h4>Báo Cáo Dòng Tiền</h4>
+          <p>Cash Flow Statement theo IFRS</p>
+          <span class="report-tag">PDF · Excel</span>
+        </div>
+        <div class="report-card card" onclick="exportPDF()">
+          <div class="report-icon">📉</div>
+          <h4>Phân Tích Chi Phí</h4>
+          <p>Breakdown chi phí theo phòng ban và danh mục</p>
+          <span class="report-tag">PDF · Excel</span>
+        </div>
+        <div class="report-card card" onclick="exportPDF()">
+          <div class="report-icon">🎯</div>
+          <h4>KPI Dashboard</h4>
+          <p>Các chỉ số tài chính chính theo thời gian</p>
+          <span class="report-tag">PDF</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PAGE: ALERTS ===== -->
+    <section class="page" id="page-alerts">
+      <div class="page-header-row">
+        <div>
+          <h2 class="page-heading">Trung Tâm Cảnh Báo</h2>
+          <p class="page-desc">Theo dõi và xử lý các cảnh báo tài chính</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn-secondary">⚙️ Cài đặt cảnh báo</button>
+          <button class="btn-outline" onclick="markAllRead()">Đánh dấu đã đọc</button>
+        </div>
+      </div>
+
+      <!-- Rendered by JS -->
+      <div class="alerts-list" id="alertsList">
+        <div style="text-align:center;padding:32px;color:var(--text-muted)">Đang tải...</div>
+      </div>
+    </section>
+
+    <!-- ===== PAGE: SETTINGS ===== -->
+    <section class="page" id="page-settings">
+      <div class="page-header-row">
+        <div>
+          <h2 class="page-heading">Cài Đặt</h2>
+          <p class="page-desc">Quản lý tài khoản và cấu hình hệ thống</p>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <div class="card settings-section">
+          <h3 class="settings-title">Thông Tin Doanh Nghiệp</h3>
+          <div class="form-group">
+            <label>Tên doanh nghiệp</label>
+            <input type="text" class="form-input" value="FinFlow Technology JSC" />
+          </div>
+          <div class="form-group">
+            <label>Mã số thuế</label>
+            <input type="text" class="form-input" value="0123456789" />
+          </div>
+          <div class="form-group">
+            <label>Đơn vị tiền tệ</label>
+            <select class="form-input">
+              <option>VNĐ (₫)</option>
+              <option>USD ($)</option>
+              <option>EUR (€)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Năm tài chính bắt đầu</label>
+            <select class="form-input">
+              <option>Tháng 1</option>
+              <option>Tháng 4</option>
+              <option>Tháng 7</option>
+            </select>
+          </div>
+          <button class="btn-primary">Lưu thay đổi</button>
+        </div>
+
+        <div class="card settings-section">
+          <h3 class="settings-title">Cấu Hình Cảnh Báo</h3>
+          <div class="toggle-item">
+            <div><strong>Cảnh báo vượt ngân sách</strong><p>Thông báo khi chi phí vượt ngân sách</p></div>
+            <label class="toggle-switch"><input type="checkbox" checked /><span class="slider"></span></label>
+          </div>
+          <div class="toggle-item">
+            <div><strong>Cảnh báo dòng tiền âm</strong><p>Cảnh báo khi cash flow dự báo âm</p></div>
+            <label class="toggle-switch"><input type="checkbox" checked /><span class="slider"></span></label>
+          </div>
+          <div class="toggle-item">
+            <div><strong>Nhắc nhở qua Email</strong><p>Gửi báo cáo hàng tuần qua email</p></div>
+            <label class="toggle-switch"><input type="checkbox" checked /><span class="slider"></span></label>
+          </div>
+          <div class="toggle-item">
+            <div><strong>AI Auto-Forecast</strong><p>Tự động chạy dự báo vào đầu tháng</p></div>
+            <label class="toggle-switch"><input type="checkbox" checked /><span class="slider"></span></label>
+          </div>
+          <div class="toggle-item">
+            <div><strong>Real-time Update</strong><p>Cập nhật dữ liệu theo thời gian thực</p></div>
+            <label class="toggle-switch"><input type="checkbox" /><span class="slider"></span></label>
+          </div>
+        </div>
+
+        <div class="card settings-section">
+          <h3 class="settings-title">Giao Diện</h3>
+          <div class="toggle-item">
+            <div><strong>Dark Mode</strong><p>Chế độ giao diện tối</p></div>
+            <label class="toggle-switch"><input type="checkbox" id="darkToggle2" /><span class="slider"></span></label>
+          </div>
+          <div class="form-group" style="margin-top:16px">
+            <label>Ngôn ngữ</label>
+            <select class="form-input">
+              <option>Tiếng Việt</option>
+              <option>English</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Múi giờ</label>
+            <select class="form-input">
+              <option>UTC+7 (Hà Nội)</option>
+              <option>UTC+0 (London)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card settings-section">
+          <h3 class="settings-title">Bảo Mật & Tài Khoản</h3>
+          <div class="user-profile-row">
+            <div class="profile-avatar-lg">NT</div>
+            <div>
+              <strong>Nguyễn Trung</strong>
+              <p>nguyentrung@finflow.vn · CFO</p>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:16px">
+            <label>Mật khẩu hiện tại</label>
+            <input type="password" class="form-input" placeholder="••••••••" />
+          </div>
+          <div class="form-group">
+            <label>Mật khẩu mới</label>
+            <input type="password" class="form-input" placeholder="••••••••" />
+          </div>
+          <button class="btn-outline">Đổi mật khẩu</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ==================== MODALS ==================== -->
+
+<!-- Budget Modal -->
+<div class="modal-overlay" id="budgetModal" onclick="closeModalOutside(event,'budgetModal')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Tạo Ngân Sách Mới</h3>
+      <button class="modal-close" onclick="closeModal('budgetModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Tên ngân sách <span style="color:var(--red)">*</span></label>
+          <input type="text" id="bName" class="form-input" placeholder="VD: Ngân sách Marketing Q3/2026" />
+        </div>
+        <div class="form-group">
+          <label>Chu kỳ</label>
+          <select id="bPeriod" class="form-input">
+            <option value="Tháng">Tháng</option>
+            <option value="Quý">Quý</option>
+            <option value="Năm">Năm</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phòng ban</label>
+          <input type="text" id="bDept" class="form-input" placeholder="VD: Marketing, HR, IT..." />
+        </div>
+        <div class="form-group">
+          <label>Danh mục chi phí</label>
+          <select id="bCat" class="form-input">
+            <option value="Nhân sự">Nhân sự</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Vận hành">Vận hành</option>
+            <option value="Logistics">Logistics</option>
+            <option value="Công nghệ">Công nghệ</option>
+            <option value="Mặt bằng">Mặt bằng</option>
+            <option value="Khác">Khác</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Số tiền ngân sách (VNĐ) <span style="color:var(--red)">*</span></label>
+        <input type="number" id="bAmount" class="form-input" placeholder="VD: 500000000" min="0" />
+      </div>
+      <div class="form-group">
+        <label>Ghi chú</label>
+        <textarea id="bNote" class="form-input" rows="2" placeholder="Mô tả ngân sách..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-outline" onclick="closeModal('budgetModal')">Hủy</button>
+      <button class="btn-primary" onclick="saveBudget()">💾 Lưu ngân sách</button>
+    </div>
+  </div>
+</div>
+
+<!-- Transaction Modal -->
+<div class="modal-overlay" id="txModal" onclick="closeModalOutside(event,'txModal')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Thêm Giao Dịch Mới</h3>
+      <button class="modal-close" onclick="closeModal('txModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ngày giao dịch</label>
+          <input type="date" id="txDate" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label>Loại giao dịch</label>
+          <select id="txType" class="form-input">
+            <option value="income">💰 Thu nhập</option>
+            <option value="expense">💸 Chi phí</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Danh mục</label>
+          <select id="txCat" class="form-input">
+            <option value="Bán hàng">Bán hàng</option>
+            <option value="Dịch vụ">Dịch vụ</option>
+            <option value="Đầu tư">Đầu tư</option>
+            <option value="Thu nhập khác">Thu nhập khác</option>
+            <option value="Nhân sự">Nhân sự</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Vận hành">Vận hành</option>
+            <option value="Mặt bằng">Mặt bằng</option>
+            <option value="Công nghệ">Công nghệ</option>
+            <option value="Logistics">Logistics</option>
+            <option value="Chi phí khác">Chi phí khác</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Số tiền (VNĐ) <span style="color:var(--red)">*</span></label>
+          <input type="number" id="txAmount" class="form-input" placeholder="VD: 50000000" min="0" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Mô tả giao dịch <span style="color:var(--red)">*</span></label>
+        <input type="text" id="txDesc" class="form-input" placeholder="Nhập mô tả giao dịch..." />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Người phụ trách</label>
+          <input type="text" id="txOwner" class="form-input" placeholder="Tên nhân viên phụ trách" />
+        </div>
+        <div class="form-group">
+          <label>Phòng ban</label>
+          <select id="txDept" class="form-input">
+            <option value="Sales">Sales</option>
+            <option value="HR">HR</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Ops">Operations</option>
+            <option value="IT">IT</option>
+            <option value="Finance">Finance</option>
+            <option value="Admin">Admin</option>
+            <option value="Log">Logistics</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Ghi chú</label>
+        <textarea id="txNote" class="form-input" rows="2" placeholder="Ghi chú thêm (tùy chọn)..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-outline" onclick="closeModal('txModal')">Hủy</button>
+      <button class="btn-primary" onclick="saveTx()">💾 Lưu giao dịch</button>
+    </div>
+  </div>
+</div>
+
+<!-- Forecast Loading -->
+<div class="modal-overlay" id="forecastLoading" style="display:none">
+  <div class="forecast-loader">
+    <div class="ai-spinner"></div>
+    <h3>AI đang phân tích dữ liệu...</h3>
+    <p>Đang chạy mô hình Time Series Forecasting</p>
+    <div class="loader-progress"><div class="loader-fill" id="loaderFill"></div></div>
+    <span class="loader-pct" id="loaderPct">0%</span>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
